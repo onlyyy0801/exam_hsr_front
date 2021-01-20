@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天亮教育考试系统-试题分类页</title>
+    <link rel="stylesheet" href="css/classify.css">
+</head>
+<body>
+    <div class="yy-classify-main">
+        <p>
+            试题分类：
+            <input type="text" id="yy-classify-value">
+<!--            <input type="button" value="添加分类" id="yy-classify-addBtn">-->
+            <button id="yy-classify-addBtn">添加分类</button>
+        </p>
+        <p>
+<!--            <input type="button" value="全选" id="yy-classify-allBtn">-->
+<!--            <input type="button" value="反选" id="yy-classify-invertBtn">-->
+<!--            <input type="button" value="删除" id="yy-classify-delAllBtn">-->
+            <button id="yy-classify-allBtn">全选</button>
+            <button id="yy-classify-invertBtn">反选</button>
+            <button id="yy-classify-delAllBtn">删除</button>
+        </p>
+        <div class="yy-classify-con">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>分类ID</td>
+                    <td>分类名称</td>
+                    <td>分类管理</td>
+                </tr>
+            </table>
+            <table id="yy-classify-table">
+
+            </table>
+        </div>
+    </div>
+</body>
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/base.js"></script>-->
+    <script src="js/classify.js"></script>
+</html>

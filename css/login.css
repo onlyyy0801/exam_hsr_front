@@ -1,0 +1,127 @@
+/*
+    每个div的宽高
+    height: 42px;
+    width: 484px;
+    21--125
+*/
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background: #334054;
+}
+
+.yy-main{
+    width: 496px;
+    height: 250px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.yy-title{
+    width: 100%;
+    height: 44px;
+    font-size: 40px;
+    line-height: 44px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+.yy-title span{
+    color: #53D192;
+    margin-left: 10px;
+}
+.yy-lors{
+    width: 100%;
+    font-size: 12px;
+    color: #5e5e5e;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 500;
+}
+
+.yy-lors a{
+    padding: 0 5px;
+}
+
+.yy-lors a:hover{
+    cursor: pointer;
+}
+
+
+.yy-aGreen{
+    color: #53D192;
+}
+.yy-aWhite{
+    color: #fff;
+}
+
+
+/*
+    每个div的宽高
+    height: 42px;
+    width: 484px;
+    21--125
+*/
+.yy-form div{
+    height: 30px;
+    width: 484px;
+    background-color: #fff;
+    padding: 6px;
+}
+
+.yy-form input{
+    border: none;
+    width: 480px;
+    height: 30px;
+    background: #fff;
+    outline:none;
+    border:0px;
+    padding-left: 4px;
+    line-height: 30px;
+    font-size: 12px;
+}
+.yy-form  input:focus {
+    -moz-box-shadow:0 0 4px #06c;
+    -webkit-box-shadow:0 0 4px #06c;
+    box-shadow:0 0 4px #06c;
+}
+
+.yy-first{
+    border-radius: 5px 5px 0 0;
+}
+.yy-last{
+    border-radius: 0 0 5px 5px;
+}
+
+.yy-blue{
+    -moz-box-shadow:0 0 10px #06c;
+    -webkit-box-shadow:0 0 10px #06c;
+    box-shadow:0 0 10px #06c;
+}
+.yy-red{
+    -moz-box-shadow:0 0 10px #f00;
+    -webkit-box-shadow:0 0 10px #f00;
+    box-shadow:0 0 10px #f00;
+}
+
+
+.yy-submit{
+    width: 100%;
+    height: 42px;
+    margin-top: 20px;
+    border-radius: 6px;
+    background: #53d192;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}

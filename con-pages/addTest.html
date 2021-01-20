@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天亮教育考试系统-试题添加页</title>
+    <link rel="stylesheet" href="css/addTest.css">
+</head>
+<body>
+    <div class="yy-addTest-main">
+        <p>
+            <span>添加试题</span>
+            <button class="yy-addTest-backBtn">返回</button>
+        </p>
+        <div class="yy-addTest-top">
+            <p>
+                试题类型：<button value="0" id="yy-addTest-topBtn-act">单选题</button><button value="1">简答题</button>
+            </p>
+            <p>
+                试题内容：
+            </p>
+            <textarea name="" id="yy-addTest-tTopic" cols="60" rows="7"></textarea>
+        </div>
+        <div class="yy-addTest-mid">
+            <p>
+                A：
+            </p>
+            <textarea name="" id="yy-addTest-choiceA" cols="60" rows="7"></textarea>
+            <p>
+                B：
+            </p>
+            <textarea name="" id="yy-addTest-choiceB" cols="60" rows="7"></textarea>
+            <p>
+                C：
+            </p>
+            <textarea name="" id="yy-addTest-choiceC" cols="60" rows="7"></textarea>
+            <p>
+                D：
+            </p>
+            <textarea name="" id="yy-addTest-choiceD" cols="60" rows="7"></textarea>
+        </div>
+        <div class="yy-addTest-bottom">
+            <p>
+                参考答案：
+            </p>
+            <textarea name="" id="yy-addTest-answer" cols="60" rows="7"></textarea>
+            <p>
+                    参考分数：<input type="text" id="yy-addTest-tScore">
+            </p>
+            <p>
+                试题分类：
+                <select name="" id="yy-addTest-tClassify">
+                    <option value="试题分类">试题分类</option>
+                </select>
+            </p>
+            <span>
+                <button id="yy-addTest-submit">提交</button>
+            </span>
+        </div>
+    </div>
+</body>
+<!--<script src="js/jquery.min.js"></script>-->
+<!--<script src="js/base.js"></script>-->
+<script src="js/addTest.js"></script>
+</html>

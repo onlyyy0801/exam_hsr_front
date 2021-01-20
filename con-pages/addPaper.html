@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天亮教育考试系统-试卷添加页</title>
+    <link rel="stylesheet" href="css/addPaper.css">
+</head>
+<body>
+    <div class="yy-addPaper-main">
+        <h3>添加试卷</h3>
+        <p>
+            <label>
+                试卷类型：
+                <select name="pType" id="yy-addPaper-pType">
+                    <option value="综合">综合</option>
+                    <option value="语文">语文</option>
+                    <option value="数学">数学</option>
+                    <option value="英语">英语</option>
+                    <option value="物理">物理</option>
+                </select>
+            </label>
+            <label>
+                试卷标题：
+                <input type="text" name="pName">
+            </label>
+        </p>
+        <div class="yy-addPaper-con">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>序号</td>
+                    <td>试题内容</td>
+                </tr>
+            </table>
+            <table id="yy-addPaper-table">
+            </table>
+        </div>
+    </div>
+</body>
+<script src="js/addPaper.js"></script>
+</html>
