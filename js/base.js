@@ -10,4 +10,4 @@ function getIndex(i) {
 }
 
 // var pathOl = "http://www.colayy.top:80/web01/";
-var pathOl = "http://localhost:8080/web01/";
+var pathOl = "http://localhost:8080/exam_hsr_ssm/";
