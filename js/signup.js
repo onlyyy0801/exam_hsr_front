@@ -47,11 +47,12 @@ nickname.on('blur',function () {
 });
 
 signBtn.on('click',function () {
+
     if(markAcc && markPwd && markRePwd && markNickname){
         let data = {
-            u_acc: acc.val(),
-            u_pwd: pwd.val(),
-            u_name: nickname.val()
+            uAcc: acc.val(),
+            uPwd: pwd.val(),
+            uName: nickname.val()
         };
         $.ajax({
             url: pathOl + 'sigin',
@@ -60,14 +61,15 @@ signBtn.on('click',function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (result) {
-                if(result.mark) {
-                    window.location.href = pathOl +　"login.html";
+                if(result) {
+                    window.location.href = "login.html";
                 }
                 else  {
-                    acc.text('');
-                    pwd.text('');
-                    rePwd.text('');
-                    nickname.text('');
+                    alert("失败");
+                    acc.val('');
+                    pwd.val('');
+                    rePwd.val('');
+                    nickname.val('');
                 }
             }
         });

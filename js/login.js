@@ -47,8 +47,8 @@ password.on('blur',function () {
 loginBtn.on('click',function () {
     if(markAcc && markPwd){
         let data = {
-            u_acc: acc.val(),
-            u_pwd: password.val()
+            uAcc: acc.val(),
+            uPwd: password.val()
         };
 
         $.ajax({
@@ -58,12 +58,12 @@ loginBtn.on('click',function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (result) {
-                if(result.u_id === "" || result.u_acc === "" || result.u_name === "" || result.u_pwd === "" ||
-                    result.u_photo === "" || result.is_disabled === "" || result.is_root === ""){
+                if(result.uId === "" || result.uAcc === "" || result.uName === "" || result.uPwd === "" ||
+                    result.uPhoto === "" || result.isDisabled === "" || result.isRoot === ""){
                     acc.text('');
                     password.text('');
-                }else if(result.u_id !== "" && result.u_acc !== "" && result.u_name !== "" && result.u_pwd !== "" &&
-                    result.u_photo !== "" && result.is_disabled === "1" && result.is_root !== ""){
+                }else if(result.uId !== "" && result.uAcc !== "" && result.uName !== "" && result.uPwd !== "" &&
+                    result.uPhoto !== "" && result.isDisabled === "1" && result.isRoot !== ""){
                     alert("该用户被禁用！！！");
                     acc.text('');
                     password.text('');
