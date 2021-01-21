@@ -118,7 +118,7 @@ html,body{
 }
 
 .yy-side a{
-    color: #cccccc;
+    color: #ccc;
 }
 .yy-side a:hover{
     cursor: pointer;
@@ -132,13 +132,13 @@ html,body{
     line-height: 30px;
 }
 
-.yy-side-menu{
-    display: none;
-}
-.yy-side-menu li{
-    background-color: #23262E;
-    padding-left: 30px;
-}
+/*.yy-side-menu{*/
+/*    display: none;*/
+/*}*/
+/*.yy-side-menu li{*/
+/*    background-color: #23262E;*/
+/*    padding-left: 30px;*/
+/*}*/
 
 
 

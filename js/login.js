@@ -8,23 +8,7 @@ let loginBtn = $('#loginBtn');
 let markAcc = false;
 let markPwd = false;
 
-// let checkAcc = /^[a-z0-9_-]{3,16}$/;
-// let checkPwd = /^[a-z0-9_-]{6,18}$/;
 
-// acc.on('blur',function () {
-//     if(checkAcc.test(acc.val())) {
-//         changeBlue(acc);
-//         markAcc = true;
-//     }
-//     else changeRed(acc);
-// });
-// password.on('blur',function () {
-//     if(checkPwd.test(password.val())) {
-//         changeBlue(password);
-//         markPwd = true;
-//     }
-//     else changeRed(password);
-// });
 acc.on('blur',function () {
     if(acc.val() !== "") {
         changeBlue(acc);

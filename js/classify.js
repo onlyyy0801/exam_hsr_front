@@ -15,7 +15,7 @@ $('#yy-classify-addBtn').click(function () {
         success: function (result) {
             if(result.result) {
                 mainClassify.html('');
-                mainClassify.load('con-pages/classify.html');
+                mainClassify.load('con-pages/classifyManagement.html');
             }
         }
     });
@@ -65,7 +65,7 @@ $(function () {
                     success: function (result) {
                         if(result.result) {
                             mainClassify.html('');
-                            mainClassify.load('con-pages/classify.html');
+                            mainClassify.load('con-pages/classifyManagement.html');
                         }
                     }
                 });
@@ -101,7 +101,7 @@ $(function () {
                             success: function (result) {
                                 if(result.result) {
                                     mainClassify.html('');
-                                    mainClassify.load('con-pages/classify.html');
+                                    mainClassify.load('con-pages/classifyManagement.html');
                                 }
                             }
                         });
