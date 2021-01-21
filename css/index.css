@@ -21,6 +21,7 @@ html,body{
     width: 100%;
     height: 60px;
     background-color: #23262E;
+    position: relative;
 }
 .yy-head a{
     font-size: 30px;
@@ -29,8 +30,49 @@ html,body{
     line-height: 60px;
     padding-left: 30px;
 }
-
-
+.yy-head-user{
+    height: 52px;
+    color: #ccc;
+    line-height: 52px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -26px;
+}
+.yy-head-photo{
+    /*height: 60px;*/
+    border-radius: 50%;
+}
+.yy-head-name{
+    float: right;
+    height: 52px;
+    line-height: 52px;
+    margin-left: 5px;
+}
+.yy-head-name a{
+    color: #ccc;
+    font-size: 12px;
+    padding-left: 5px;
+}
+.yy-head-name a:hover{
+    text-decoration: underline;
+}
+.yy-head-more{
+    width: 12px;
+    height: 12px;
+}
+.yy-head-list{
+    width: 100px;
+    height: 120px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    position: absolute;
+    top: 60px;
+}
+.yy-head-list ul{
+    display: none;
+}
 /**
     头部区域结束
  */

@@ -75,7 +75,6 @@ loginBtn.on('click',function () {
             }
         });
     }
-
 });
 
 
