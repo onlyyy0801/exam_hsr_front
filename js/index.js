@@ -1,8 +1,63 @@
 $(function () {
+    // 假数据存储
+    // let falseData = {
+    //     uId: "fd1ff6bf-dc3e-4c4c-9ee4-76e97ceb4f51",
+    //     uAcc: "admin",
+    //     uName: "admin",
+    //     uPwd: "admin123",
+    //     uPhoto: "img/TL.png",
+    //     isDisabled: 0,
+    //     isRoot: 1
+    // };
+    // localStorage.setItem("UserMsg",JSON.stringify(falseData));
 
 
+    /**
+     * 顶部用户信息展示
+     */
+    let JsonUserMsg = localStorage.getItem("UserMsg");
+    let UserMsg = JSON.parse(JsonUserMsg);
+    loadUserMsg();
 
+    /**
+     * 顶部用户信息修改、密码修改、退出
+     */
 
+    $('.yy-head-msg').click(function () {
+        layer.open({
+            type: 2,
+            title: "个人信息修改",
+            area: ["320px","200px"],
+            maxmin: false,
+            // closeBtn: 1,
+            shadeClose: true,
+            content: "con-pages/changeUserMsg.html",
+            success: function (layero, index) {
+                let body = layer.getChildFrame('body', index);
+                body.find("input[name=account]").val(UserMsg.uAcc);
+                body.find("input[name=password]").val(UserMsg.uPwd);
+                body.find("input[name=name]").val(UserMsg.uName);
+            }
+        });
+    });
+    $('.yy-head-pwd').click(function () {
+        layer.open({
+            type: 2,
+            title: "用户密码修改",
+            area: ["320px","180px"],
+            maxmin: false,
+            // closeBtn: 1,
+            shadeClose: true,
+            content: "con-pages/changeUserPwd.html",
+            success: function (layero, index) {
+                let body = layer.getChildFrame('body', index);
+                body.find("input[name=password]").val(UserMsg.uPwd);
+            }
+        });
+    });
+    $('.yy-head-exit').click(function () {
+        localStorage.removeItem("UserMsg");
+    });
 
 
 
@@ -49,4 +104,30 @@ $(function () {
         mainCon.html('');
         mainCon.load("con-pages/showPaper.html");
     });
-})
+});
+
+
+function loadUserMsg() {
+    let JsonUserMsgOld = localStorage.getItem("UserMsg");
+    let UserMsgOld = JSON.parse(JsonUserMsgOld);
+    let uId = UserMsgOld.uId;
+    let data = {
+        uId: uId
+    };
+    $.ajax({
+        url: pathOl + "showUserById",
+        type: "post",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (result) {
+            localStorage.setItem("UserMsg", JSON.stringify(result));
+        }
+    });
+
+    let JsonUserMsg = localStorage.getItem("UserMsg");
+    let UserMsg = JSON.parse(JsonUserMsg);
+
+    $('.yy-head-photo').attr("src",UserMsg.uPhoto);
+    $('.yy-head-userName').text(UserMsg.uName);
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>天亮教育考试系统</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/layer.css">
     <link rel="icon" type="image/png" href="img/TL-g.png">
 </head>
 <body>
@@ -13,17 +14,16 @@
             <img src="img/TL.png" alt="" class="yy-head-photo">
             <div class="yy-head-name">
                 <a href="javascript:;">
-                    onlyyy0801
+                    <span class="yy-head-userName"></span>
                     <img src="img/more.png" alt="" class="yy-head-more">
                 </a>
-            </div>
-
-            <div class="yy-head-list">
-                <ul>
-                    <li>个人信息</li>
-                    <li>修改密码</li>
-                    <li>退出</li>
-                </ul>
+                <div class="yy-head-list">
+                    <ul>
+                        <li><a href="javascript:;" class="yy-head-msg">个人信息</a></li>
+                        <li><a href="javascript:;" class="yy-head-pwd">修改密码</a></li>
+                        <li><a href="javascript:;" class="yy-head-exit">退出</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -56,6 +56,7 @@
     </div>
 </body>
     <script src="js/jquery.min.js"></script>
+    <script src="js/layer.js"></script>
     <script src="js/base.js"></script>
     <script src="js/index.js"></script>
 </html>

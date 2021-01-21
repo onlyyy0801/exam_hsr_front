@@ -21,29 +21,25 @@ acc.on('blur',function () {
     if(checkAcc.test(acc.val())){
         changeBlue(acc);
         markAcc = true;
-    }
-    else changeRed(acc);
+    } else changeRed(acc);
 });
 pwd.on('blur',function () {
     if(checkPwd.test(pwd.val())) {
         changeBlue(pwd);
         markPwd = true;
-    }
-    else changeRed(pwd);
+    } else changeRed(pwd);
 });
 rePwd.on('blur',function () {
     if(pwd.val() === rePwd.val()) {
         changeBlue(rePwd);
         markRePwd = true;
-    }
-    else changeRed(rePwd);
+    } else changeRed(rePwd);
 });
 nickname.on('blur',function () {
     if(nickname.val() !== "") {
         changeBlue(nickname);
         markNickname = true;
-    }
-    else changeRed(nickname);
+    } else changeRed(nickname);
 });
 
 signBtn.on('click',function () {

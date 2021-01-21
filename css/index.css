@@ -40,8 +40,9 @@ html,body{
     margin-top: -20px;
 }
 .yy-head-photo{
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
     border-radius: 50%;
 }
 .yy-head-name{
@@ -49,6 +50,7 @@ html,body{
     height: 40px;
     line-height: 40px;
     margin-left: 5px;
+    position: relative;
 }
 .yy-head-name a{
     color: #ccc;
@@ -59,7 +61,7 @@ html,body{
 .yy-head-name a:hover{
     text-decoration: underline;
 }
-.yy-head-name a:hover .yy-head-list{
+.yy-head-name:hover .yy-head-list{
     display: block;
 }
 .yy-head-more{
@@ -73,12 +75,22 @@ html,body{
     border: 1px solid #ccc;
     border-radius: 2px;
     position: absolute;
-    top: 33px;
+    top: 35px;
     right: -10px;
     display: none;
 }
+.yy-head-list:hover{
+    display: block;
+}
 .yy-head-list ul{
-    display: none;
+    text-align: center;
+}
+.yy-head-list li:hover{
+    background-color: #ccc;
+}
+.yy-head-list li a{
+    color: #000;
+    font-size: 14px;
 }
 /**
     头部区域结束

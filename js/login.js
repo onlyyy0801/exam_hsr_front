@@ -58,15 +58,15 @@ loginBtn.on('click',function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (result) {
-                if(result.uId === "" || result.uAcc === "" || result.uName === "" || result.uPwd === "" ||
-                    result.uPhoto === "" || result.isDisabled === "" || result.isRoot === ""){
-                    acc.text('');
-                    password.text('');
-                }else if(result.uId !== "" && result.uAcc !== "" && result.uName !== "" && result.uPwd !== "" &&
-                    result.uPhoto !== "" && result.isDisabled === "1" && result.isRoot !== ""){
+                console.log(result);
+                if(result.uId == null || result.uAcc == null || result.uName == null || result.uPwd == null ||
+                    result.uPhoto == null ){
+                    acc.val('');
+                    password.val('');
+                }else if(result.isDisabled === 1){
                     alert("该用户被禁用！！！");
-                    acc.text('');
-                    password.text('');
+                    acc.val('');
+                    password.val('');
                 }else{
                     localStorage.setItem("UserMsg", JSON.stringify(result));
                     // window.location.href = "http://localhost:8080/web01/index.html";
