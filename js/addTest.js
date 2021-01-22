@@ -1,7 +1,7 @@
 $('.yy-addTest-backBtn').click(function () {
     let mainBackBtn = $(this).parent().parent();
     mainBackBtn.html('');
-    mainBackBtn.load("con-pages/testManagement.html");
+    mainBackBtn.load("con-pages/TestManagement.html");
 });
 
 let topBtn = $('.yy-addTest-top>p>button');

@@ -9,8 +9,11 @@ $('input[name=password]').on('blur',function () {
 })
 
 $('.hsr-changePwd-btn').click(function () {
+    let JsonUserMsg = localStorage.getItem("UserMsg");
+    let UserMsg = JSON.parse(JsonUserMsg);
     if(markPwd){
         let data = {
+            uId: UserMsg.uId,
             uPwd: $('input[name=password]').val()
         }
         $.ajax({
@@ -23,8 +26,8 @@ $('.hsr-changePwd-btn').click(function () {
                 let index = parent.layer.getFrameIndex(window.name);
                 if(result){
                     parent.layer.close(index);
-                    parent.loadUserMsg();
                     parent.layer.msg("用户密码修改成功");
+                    parent.loadUserMsg(UserMsg.uId);
                 }else{
                     parent.layer.close(index);
                     parent.layer.msg("用户密码修改失败");

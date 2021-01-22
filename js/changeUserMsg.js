@@ -16,8 +16,11 @@ $('input[name=name]').on('blur',function () {
 });
 
 $('.hsr-changeMsg-btn').click(function () {
+    let JsonUserMsg = localStorage.getItem("UserMsg");
+    let UserMsg = JSON.parse(JsonUserMsg);
     if(markAcc && markName){
         let data = {
+            uId: UserMsg.uId,
             uAcc: $('input[name=account]').val(),
             uName: $('input[name=name]').val()
         }
@@ -31,8 +34,8 @@ $('.hsr-changeMsg-btn').click(function () {
                 let index = parent.layer.getFrameIndex(window.name);
                 if(result){
                     parent.layer.close(index);
-                    parent.loadUserMsg();
                     parent.layer.msg("用户信息修改成功");
+                    parent.loadUserMsg(UserMsg.uId);
                 }else{
                     parent.layer.close(index);
                     parent.layer.msg("用户信息修改失败");
