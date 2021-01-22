@@ -33,15 +33,11 @@ function loadMenu() {
         contentType: "application/json",
         dataType: "json",
         success: function (result) {
-            console.log(result);
             let len = result.length;
-            console.log(len)
             let sideMain = $('.yy-side-main');
             sideMain.html('');
             for(let i = 0; i < len; i++){
                 if(result[i].isDelete === 1) continue;
-                console.log(result[i].mCon);
-                console.log(result[i].mPage);
                 let a = $('<a>'+ result[i].mCon +'</a>');
                 let li = $('<li>');
                 a.attr("class","yy-side-menu");
@@ -57,7 +53,6 @@ function loadMenu() {
 
             mainCon.load('con-pages/' + sideMenu.eq(0).attr('page-name') + '.html');
             sideMenu.on('click',function () {
-                console.log($(this).attr('page-name'));
                 $('.yy-con-title a').text($(this).text());
                 mainCon.html('');
                 mainCon.load('con-pages/' + $(this).attr('page-name') + '.html');
@@ -132,19 +127,6 @@ $(function () {
         localStorage.removeItem("UserMsg");
         window.location.href = "login.html";
     });
-
-
-
-
-
-
-
-
-    // sideMenu.click(function () {
-    //     $('.yy-con-title a').text($(this).text());
-    //     mainCon.html('');
-    //     mainCon.load('con-pages/' + $(this).attr('page-name') + '.html');
-    // });
 });
 
 
