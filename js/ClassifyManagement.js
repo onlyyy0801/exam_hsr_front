@@ -33,7 +33,7 @@ function wgzClassifyTable() {
         },
         columns:[
             {
-                title:'标题',
+                title:'序号',
                 align:'center',//水平居中
                 // halign:'center',//垂直居中
                 formatter:function (value,row,index) {

@@ -32,6 +32,7 @@ $('.hsr-changeClassify').click(function () {
                     parent.layer.close(index);
                     parent.layer.msg("修改失败！！！");
                 }
+                localStorage.removeItem("changeClassify");
             }
         });
     }

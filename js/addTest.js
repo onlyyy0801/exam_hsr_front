@@ -1,11 +1,13 @@
-$('.yy-addTest-backBtn').click(function () {
-    let mainBackBtn = $(this).parent().parent();
-    mainBackBtn.html('');
-    mainBackBtn.load("con-pages/TestManagement.html");
+//返回点击事件
+$('.yy-addTest-backBtn').on("click",function () {
+    let index=parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);
 });
-
 let topBtn = $('.yy-addTest-top>p>button');
+let jsonStr=localStorage.getItem("UserMsg")
+let jsonObj=JSON.parse(jsonStr);
 
+//单选按钮和简答题按钮切换
 topBtn.click(function () {
     $('.yy-addTest-top>p>button').removeAttr('id');
     $(this).attr('id','yy-addTest-topBtn-act');
@@ -14,12 +16,12 @@ topBtn.click(function () {
 });
 
 $(function () {
+    //添加试题分类中的内容
     let jsonData = {
-        mark: 'showAllClassify',
-        data: ''
+        uId: jsonObj.uId
     };
     $.ajax({
-        url: pathOl + 'classify',
+        url: pathOl + 'showClassifyList',
         type: 'post',
         data: JSON.stringify(jsonData),
         contentType: 'application/json',
@@ -28,38 +30,36 @@ $(function () {
             $('#yy-addTest-tClassify').html('');
             let len = result.result.length;
             for(let i = 0; i < len; i++){
-                let option = $('<option value="'+result.result[i]+'">'+result.result[i]+'</option>')
+                let option = $('<option value="'+result[i].cId+'">'+result[i].cName+'</option>')
                 $('#yy-addTest-tClassify').append(option);
             }
         }
     });
 
+    //进入该界面为修改时
     if(localStorage.getItem("mark")==="edit"){
-        let tType = localStorage.getItem("tType");
-        let tTopic = localStorage.getItem("tTopic");
+        let tId = localStorage.getItem("tId");
+        // let tTopic = localStorage.getItem("tTopic");
 
         localStorage.setItem('mark',"");
-        localStorage.setItem('tTopic',"");
+        // localStorage.setItem('tTopic',"");
         localStorage.setItem('tType',"");
 
         let tTypeBtns = $('.yy-addTest-top>p>button');
         tTypeBtns.attr('disabled',true);
         tTypeBtns.removeAttr('id');
         let jsonData = {
-            mark: 'changeTest',
-            data: {
-                judge: tType,
-                tTopic: tTopic
-            }
+            tId:tId,
+            uId: jsonObj.uId
         };
         $.ajax({
-            url: pathOl + 'test',
+            url: pathOl + 'showTestById',
             type: 'post',
             data: JSON.stringify(jsonData),
             contentType: 'application/json',
             dataType: 'json',
             success: function (result) {
-                if(result.testAllCon.tType === 0){
+                if(result.tType === 0){
 
                     let activeBtn = $('.yy-addTest-top>p button:nth-child(1)');
                     activeBtn.attr('id','yy-addTest-topBtn-act');
@@ -67,18 +67,18 @@ $(function () {
 
                     $('.yy-addTest-mid').show();
 
-                    $('#yy-addTest-tTopic').val(result.testAllCon.tTopic);
-                    $('#yy-addTest-choiceA').val(result.optionAllCon.oA);
-                    $('#yy-addTest-choiceB').val(result.optionAllCon.oB);
-                    $('#yy-addTest-choiceC').val(result.optionAllCon.oC);
-                    $('#yy-addTest-choiceD').val(result.optionAllCon.oD);
-                    $('#yy-addTest-answer').val(result.testAllCon.tAnswer);
-                    $('#yy-addTest-tScore').val(result.testAllCon.tScore);
-                    $('#yy-addTest-tClassify').val(result.testAllCon.tClassify);
+                    $('#yy-addTest-tTopic').val(result.tTopic);
+                    $('#yy-addTest-choiceA').val(result.oA);
+                    $('#yy-addTest-choiceB').val(result.oB);
+                    $('#yy-addTest-choiceC').val(result.oC);
+                    $('#yy-addTest-choiceD').val(result.oD);
+                    $('#yy-addTest-answer').val(result.tAnswer);
+                    $('#yy-addTest-tScore').val(result.tScore);
+                    $('#yy-addTest-tClassify').val(result.tClassify);
 
                     localStorage.setItem('mark',"needSubmitSingle");
 
-                }else if(result.testAllCon.tType === 1){
+                }else if(result.tType === 1){
 
                     let activeBtn = $('.yy-addTest-top>p button:nth-child(2)');
                     activeBtn.attr('id','yy-addTest-topBtn-act');
@@ -86,10 +86,10 @@ $(function () {
 
                     $('.yy-addTest-mid').hide();
 
-                    $('#yy-addTest-tTopic').val(result.testAllCon.tTopic);
-                    $('#yy-addTest-answer').val(result.testAllCon.tAnswer);
-                    $('#yy-addTest-tScore').val(result.testAllCon.tScore);
-                    $('#yy-addTest-tClassify').val(result.testAllCon.tClassify);
+                    $('#yy-addTest-tTopic').val(result.tTopic);
+                    $('#yy-addTest-answer').val(result.tAnswer);
+                    $('#yy-addTest-tScore').val(result.tScore);
+                    $('#yy-addTest-tClassify').val(result.tClassify);
 
                     localStorage.setItem('mark',"needSubmitQuest");
                 }
@@ -99,94 +99,31 @@ $(function () {
 
 });
 
+//提交的点击事件
 $('#yy-addTest-submit').click(function () {
-    if(localStorage.getItem('mark') === "needSubmit"){
+    if(localStorage.getItem('mark') === "needSubmit"){      //添加试题的提交
         localStorage.setItem('mark',"");
-        let tType = $('#yy-addTest-topBtn-act').val();
-        if(tType === "0") {
-            let jsonData = {
-                mark: 'insertSingle',
-                data: {
-                    tType: tType,
-                    tTopic: $('#yy-addTest-tTopic').val(),
-                    choiceA: $('#yy-addTest-choiceA').val(),
-                    choiceB: $('#yy-addTest-choiceB').val(),
-                    choiceC: $('#yy-addTest-choiceC').val(),
-                    choiceD: $('#yy-addTest-choiceD').val(),
-                    tAnswer: $('#yy-addTest-answer').val(),
-                    tScore: $('#yy-addTest-tScore').val(),
-                    tClassify: $('#yy-addTest-tClassify').val()
-                }
-            }
-            $.ajax({
-                url: pathOl + 'test',
-                type: 'post',
-                data: JSON.stringify(jsonData),
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (result){
-                    if(result.result) {
-                        $('#yy-addTest-tTopic').val('');
-                        $('#yy-addTest-choiceA').val('');
-                        $('#yy-addTest-choiceB').val('');
-                        $('#yy-addTest-choiceC').val('');
-                        $('#yy-addTest-choiceD').val('');
-                        $('#yy-addTest-answer').val('');
-                        $('#yy-addTest-tScore').val('');
-                        alert("添加成功！");
-                    }
-                }
-            });
-        }else if(tType === "1"){
-            let jsonData = {
-                mark: 'insertQuest',
-                data: {
-                    tType: tType,
-                    tTopic: $('#yy-addTest-tTopic').val(),
-                    tAnswer: $('#yy-addTest-answer').val(),
-                    tScore: $('#yy-addTest-tScore').val(),
-                    tClassify: $('#yy-addTest-tClassify').val()
-                }
-            }
-            $.ajax({
-                url: pathOl + 'test',
-                type: 'post',
-                data: JSON.stringify(jsonData),
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (result){
-                    if(result.result) {
-                        $('#yy-addTest-tTopic').val('');
-                        $('#yy-addTest-answer').val('');
-                        $('#yy-addTest-tScore').val('');
-                        alert("添加成功！");
-                    }
-                }
-            });
+        let jsonData = {
+            tType: $('#yy-addTest-topBtn-act').val(),
+            tTopic: $('#yy-addTest-tTopic').val(),
+            cId: $('#yy-addTest-tClassify').val(),
+            uId:jsonObj.uId,
+            oA: $('#yy-addTest-choiceA').val(),
+            oB: $('#yy-addTest-choiceB').val(),
+            oC: $('#yy-addTest-choiceC').val(),
+            oD: $('#yy-addTest-choiceD').val(),
+            tAnswer: $('#yy-addTest-answer').val(),
+            tScore: $('#yy-addTest-tScore').val()
         }
-    }else if(localStorage.getItem('mark') === "needSubmitSingle"){
-        localStorage.setItem('mark',"");
-        let jsonData = {
-            mark: 'updateSingle',
-            data: {
-                tTopic: $('#yy-addTest-tTopic').val(),
-                choiceA: $('#yy-addTest-choiceA').val(),
-                choiceB: $('#yy-addTest-choiceB').val(),
-                choiceC: $('#yy-addTest-choiceC').val(),
-                choiceD: $('#yy-addTest-choiceD').val(),
-                tAnswer: $('#yy-addTest-answer').val(),
-                tScore: $('#yy-addTest-tScore').val(),
-                tClassify: $('#yy-addTest-tClassify').val()
-            }
-        };
         $.ajax({
-            url: pathOl + 'test',
+            url: pathOl + 'addTest',
             type: 'post',
             data: JSON.stringify(jsonData),
             contentType: 'application/json',
             dataType: 'json',
             success: function (result){
-                if(result.result) {
+                let index=parent.layer.getFrameIndex(window.name);
+                if(result) {
                     $('#yy-addTest-tTopic').val('');
                     $('#yy-addTest-choiceA').val('');
                     $('#yy-addTest-choiceB').val('');
@@ -194,31 +131,39 @@ $('#yy-addTest-submit').click(function () {
                     $('#yy-addTest-choiceD').val('');
                     $('#yy-addTest-answer').val('');
                     $('#yy-addTest-tScore').val('');
-                    alert("修改成功！");
+                    parent.layer.close(index);
+                    parent.reLoadTest();
+                    //msg 消息框
+                    parent.layer.msg("添加成功！")
+                }else{
+                    parent.layer.close(index);
+                    parent.layer.msg("添加失败！！！")
                 }
             }
         });
-
-
-    }else if(localStorage.getItem('mark') === "needSubmitQuest"){
+    }else {      //修改的提交
         localStorage.setItem('mark',"");
         let jsonData = {
-            mark: 'updateQuest',
-            data: {
-                tTopic: $('#yy-addTest-tTopic').val(),
-                tAnswer: $('#yy-addTest-answer').val(),
-                tScore: $('#yy-addTest-tScore').val(),
-                tClassify: $('#yy-addTest-tClassify').val()
-            }
+            tId:localStorage.getItem("tId"),
+            tTopic: $('#yy-addTest-tTopic').val(),
+            tType: $('#yy-addTest-topBtn-act').val(),
+            oA: $('#yy-addTest-choiceA').val(),
+            oB: $('#yy-addTest-choiceB').val(),
+            oC: $('#yy-addTest-choiceC').val(),
+            oD: $('#yy-addTest-choiceD').val(),
+            tAnswer: $('#yy-addTest-answer').val(),
+            tScore: $('#yy-addTest-tScore').val(),
+            cId: $('#yy-addTest-tClassify').val()
         };
         $.ajax({
-            url: pathOl + 'test',
+            url: pathOl + 'changeTest',
             type: 'post',
             data: JSON.stringify(jsonData),
             contentType: 'application/json',
             dataType: 'json',
             success: function (result){
-                if(result.result) {
+                let index=parent.layer.getFrameIndex(window.name);
+                if(result) {
                     $('#yy-addTest-tTopic').val('');
                     $('#yy-addTest-choiceA').val('');
                     $('#yy-addTest-choiceB').val('');
@@ -226,10 +171,18 @@ $('#yy-addTest-submit').click(function () {
                     $('#yy-addTest-choiceD').val('');
                     $('#yy-addTest-answer').val('');
                     $('#yy-addTest-tScore').val('');
-                    alert("修改成功！");
+                    parent.layer.close(index);
+                    parent.reLoadTest();
+                    //msg 消息框
+                    parent.layer.msg("修改成功！");
+                }else {
+                    parent.layer.close(index);
+                    //msg 消息框
+                    parent.layer.msg("修改失败！");
                 }
             }
         });
+
 
     }
 
