@@ -107,8 +107,28 @@ function wgzTestTable() {
             }
         ],
         onDblClickRow:function (row,$element) {
-            alert(JSON.stringify(row));
-            console.log($element)
+            localStorage.setItem('mark',"edit");
+            localStorage.setItem('tId',row.tId);
+            localStorage.setItem('showMark','show');
+            //打开 弹出层
+            layer.open({
+                type:2,//可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
+                title:'修改分类名',
+                maxmin:false,
+                shadeClose:false,
+                area:["320px","200px"],//弹出层的宽高
+                content:'con-pages/addTest.html',//设置弹出层打开的页面
+                //弹出层页面成功打开后，的设置       加载子页面 渲染子页面 load后端数据 弹出 success 展示成功
+                // success:function(layero,index){
+                //     //当前是表格页面     修改是表格的子页面   父页面JS代码中将数据传递给子页面中
+                //     //获取子页面HTML对象  固定方法
+                //     //js  dom对象
+                //     let childBody= layer.getChildFrame('body',index);
+                //     //在childBody子页面body区域中find（查找）input标签name属性是xxx的那个input对象，给其设置值为xxx
+                //     $(childBody).find('input[name=className]').val(cName);
+                //     //获取子页面JS对象
+                // }
+            });
         }
     })
 }

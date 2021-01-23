@@ -78,7 +78,22 @@ $(function () {
 
                     localStorage.setItem('mark',"needSubmitSingle");
 
+                    if (localStorage.getItem('showMark')==='show'){
+                        localStorage.removeItem('showMark');
+                        //设置内容为只可读
+                        $('#yy-addTest-tTopic').attr("disabled","disabled");
+                        $('#yy-addTest-choiceA').attr("disabled","disabled");
+                        $('#yy-addTest-choiceB').attr("disabled","disabled");
+                        $('#yy-addTest-choiceC').attr("disabled","disabled");
+                        $('#yy-addTest-choiceD').attr("disabled","disabled");
+                        $('#yy-addTest-answer').attr("disabled","disabled");
+                        $('#yy-addTest-tScore').attr("readonly","readonly");
+                        $('#yy-addTest-tClassify').attr("disabled","disabled");
+                        $("#yy-addTest-submit").hide();
+                    }
+
                 }else if(result.tType === 1){
+
 
                     let activeBtn = $('.yy-addTest-top>p button:nth-child(2)');
                     activeBtn.attr('id','yy-addTest-topBtn-act');
@@ -92,6 +107,15 @@ $(function () {
                     $('#yy-addTest-tClassify').val(result.tClassify);
 
                     localStorage.setItem('mark',"needSubmitQuest");
+
+                    if (localStorage.getItem('showMark')==='show'){
+                        localStorage.removeItem('showMark');
+                        $('#yy-addTest-tTopic').attr("disabled","disabled");
+                        $('#yy-addTest-answer').attr("disabled","disabled");
+                        $('#yy-addTest-tScore').attr("readonly","readonly");
+                        $('#yy-addTest-tClassify').attr("disabled","disabled");
+                        $("#yy-addTest-submit").hide();
+                    }
                 }
             }
         });
