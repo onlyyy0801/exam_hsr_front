@@ -30,6 +30,8 @@ function reLoadTest() {
 }
 
 function wgzTestTable() {
+    let jsonStr=localStorage.getItem("UserMsg");
+    let jsonObj=JSON.parse(jsonStr);
     let url = pathOl+"showAllTest";
     $("#hsr-test-table").bootstrapTable({
         url:url,

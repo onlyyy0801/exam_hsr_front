@@ -42,6 +42,7 @@ function loadMenu() {
                 let li = $('<li>');
                 a.attr("class","hsr-side-menu");
                 a.attr("page-name",result[i].mPage);
+                a.attr("style","text-decoration:none");
                 li.append(a);
                 sideMain.append(li);
             }
