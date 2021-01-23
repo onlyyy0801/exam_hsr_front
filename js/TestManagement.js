@@ -166,7 +166,7 @@ function changingTest(tId) {
         title:'修改分类名',
         maxmin:false,
         shadeClose:false,
-        area:["320px","200px"],//弹出层的宽高
+        area:["70%","70%"],//弹出层的宽高
         content:'con-pages/addTest.html',//设置弹出层打开的页面
         //弹出层页面成功打开后，的设置       加载子页面 渲染子页面 load后端数据 弹出 success 展示成功
         // success:function(layero,index){

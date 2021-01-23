@@ -28,7 +28,7 @@ $(function () {
         dataType: 'json',
         success: function (result) {
             $('#yy-addTest-tClassify').html('');
-            let len = result.result.length;
+            let len = result.length;
             for(let i = 0; i < len; i++){
                 let option = $('<option value="'+result[i].cId+'">'+result[i].cName+'</option>')
                 $('#yy-addTest-tClassify').append(option);
