@@ -1,5 +1,5 @@
 
-$('#yy-test-addBtn').click(function () {
+$('#hsr-test-addBtn').click(function () {
     localStorage.setItem('mark',"needSubmit");
     //打开 弹出层
     layer.open({

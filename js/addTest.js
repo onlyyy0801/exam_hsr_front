@@ -1,18 +1,18 @@
 //返回点击事件
-$('.yy-addTest-backBtn').on("click",function () {
+$('.hsr-addTest-backBtn').on("click",function () {
     let index=parent.layer.getFrameIndex(window.name);
     parent.layer.close(index);
 });
-let topBtn = $('.yy-addTest-top>p>button');
+let topBtn = $('.hsr-addTest-top>p>button');
 let jsonStr=localStorage.getItem("UserMsg")
 let jsonObj=JSON.parse(jsonStr);
 
 //单选按钮和简答题按钮切换
 topBtn.click(function () {
-    $('.yy-addTest-top>p>button').removeAttr('id');
-    $(this).attr('id','yy-addTest-topBtn-act');
-    if($(this).text() === "单选题") $('.yy-addTest-mid').show();
-    else if($(this).text() === "简答题") $('.yy-addTest-mid').hide();
+    $('.hsr-addTest-top>p>button').removeAttr('id');
+    $(this).attr('id','hsr-addTest-topBtn-act');
+    if($(this).text() === "单选题") $('.hsr-addTest-mid').show();
+    else if($(this).text() === "简答题") $('.hsr-addTest-mid').hide();
 });
 
 $(function () {
@@ -27,11 +27,11 @@ $(function () {
         contentType: 'application/json',
         dataType: 'json',
         success: function (result) {
-            $('#yy-addTest-tClassify').html('');
+            $('#hsr-addTest-tClassify').html('');
             let len = result.length;
             for(let i = 0; i < len; i++){
                 let option = $('<option value="'+result[i].cId+'">'+result[i].cName+'</option>')
-                $('#yy-addTest-tClassify').append(option);
+                $('#hsr-addTest-tClassify').append(option);
             }
         }
     });
@@ -45,7 +45,7 @@ $(function () {
         // localStorage.setItem('tTopic',"");
         localStorage.setItem('tType',"");
 
-        let tTypeBtns = $('.yy-addTest-top>p>button');
+        let tTypeBtns = $('.hsr-addTest-top>p>button');
         tTypeBtns.attr('disabled',true);
         tTypeBtns.removeAttr('id');
         let jsonData = {
@@ -61,60 +61,60 @@ $(function () {
             success: function (result) {
                 if(result.tType === 0){
 
-                    let activeBtn = $('.yy-addTest-top>p button:nth-child(1)');
-                    activeBtn.attr('id','yy-addTest-topBtn-act');
+                    let activeBtn = $('.hsr-addTest-top>p button:nth-child(1)');
+                    activeBtn.attr('id','hsr-addTest-topBtn-act');
                     activeBtn.attr('mark','change');
 
-                    $('.yy-addTest-mid').show();
+                    $('.hsr-addTest-mid').show();
 
-                    $('#yy-addTest-tTopic').val(result.tTopic);
-                    $('#yy-addTest-choiceA').val(result.oA);
-                    $('#yy-addTest-choiceB').val(result.oB);
-                    $('#yy-addTest-choiceC').val(result.oC);
-                    $('#yy-addTest-choiceD').val(result.oD);
-                    $('#yy-addTest-answer').val(result.tAnswer);
-                    $('#yy-addTest-tScore').val(result.tScore);
-                    $('#yy-addTest-tClassify').val(result.cId);
+                    $('#hsr-addTest-tTopic').val(result.tTopic);
+                    $('#hsr-addTest-choiceA').val(result.oA);
+                    $('#hsr-addTest-choiceB').val(result.oB);
+                    $('#hsr-addTest-choiceC').val(result.oC);
+                    $('#hsr-addTest-choiceD').val(result.oD);
+                    $('#hsr-addTest-answer').val(result.tAnswer);
+                    $('#hsr-addTest-tScore').val(result.tScore);
+                    $('#hsr-addTest-tClassify').val(result.cId);
 
                     localStorage.setItem('mark',"needSubmitSingle");
 
                     if (localStorage.getItem('showMark')==='show'){
                         localStorage.removeItem('showMark');
                         //设置内容为只可读
-                        $('#yy-addTest-tTopic').attr("disabled","disabled");
-                        $('#yy-addTest-choiceA').attr("disabled","disabled");
-                        $('#yy-addTest-choiceB').attr("disabled","disabled");
-                        $('#yy-addTest-choiceC').attr("disabled","disabled");
-                        $('#yy-addTest-choiceD').attr("disabled","disabled");
-                        $('#yy-addTest-answer').attr("disabled","disabled");
-                        $('#yy-addTest-tScore').attr("readonly","readonly");
-                        $('#yy-addTest-tClassify').attr("disabled","disabled");
-                        $("#yy-addTest-submit").hide();
+                        $('#hsr-addTest-tTopic').attr("disabled","disabled");
+                        $('#hsr-addTest-choiceA').attr("disabled","disabled");
+                        $('#hsr-addTest-choiceB').attr("disabled","disabled");
+                        $('#hsr-addTest-choiceC').attr("disabled","disabled");
+                        $('#hsr-addTest-choiceD').attr("disabled","disabled");
+                        $('#hsr-addTest-answer').attr("disabled","disabled");
+                        $('#hsr-addTest-tScore').attr("readonly","readonly");
+                        $('#hsr-addTest-tClassify').attr("disabled","disabled");
+                        $("#hsr-addTest-submit").hide();
                     }
 
                 }else if(result.tType === 1){
 
 
-                    let activeBtn = $('.yy-addTest-top>p button:nth-child(2)');
-                    activeBtn.attr('id','yy-addTest-topBtn-act');
+                    let activeBtn = $('.hsr-addTest-top>p button:nth-child(2)');
+                    activeBtn.attr('id','hsr-addTest-topBtn-act');
                     activeBtn.attr('mark','change');
 
-                    $('.yy-addTest-mid').hide();
+                    $('.hsr-addTest-mid').hide();
 
-                    $('#yy-addTest-tTopic').val(result.tTopic);
-                    $('#yy-addTest-answer').val(result.tAnswer);
-                    $('#yy-addTest-tScore').val(result.tScore);
-                    $('#yy-addTest-tClassify').val(result.cId);
+                    $('#hsr-addTest-tTopic').val(result.tTopic);
+                    $('#hsr-addTest-answer').val(result.tAnswer);
+                    $('#hsr-addTest-tScore').val(result.tScore);
+                    $('#hsr-addTest-tClassify').val(result.cId);
 
                     localStorage.setItem('mark',"needSubmitQuest");
 
                     if (localStorage.getItem('showMark')==='show'){
                         localStorage.removeItem('showMark');
-                        $('#yy-addTest-tTopic').attr("disabled","disabled");
-                        $('#yy-addTest-answer').attr("disabled","disabled");
-                        $('#yy-addTest-tScore').attr("readonly","readonly");
-                        $('#yy-addTest-tClassify').attr("disabled","disabled");
-                        $("#yy-addTest-submit").hide();
+                        $('#hsr-addTest-tTopic').attr("disabled","disabled");
+                        $('#hsr-addTest-answer').attr("disabled","disabled");
+                        $('#hsr-addTest-tScore').attr("readonly","readonly");
+                        $('#hsr-addTest-tClassify').attr("disabled","disabled");
+                        $("#hsr-addTest-submit").hide();
                     }
                 }
             }
@@ -124,20 +124,20 @@ $(function () {
 });
 
 //提交的点击事件
-$('#yy-addTest-submit').click(function () {
+$('#hsr-addTest-submit').click(function () {
     if(localStorage.getItem('mark') === "needSubmit"){      //添加试题的提交
         localStorage.setItem('mark',"");
         let jsonData = {
-            tType: $('#yy-addTest-topBtn-act').val(),
-            tTopic: $('#yy-addTest-tTopic').val(),
-            cId: $('#yy-addTest-tClassify').val(),
+            tType: $('#hsr-addTest-topBtn-act').val(),
+            tTopic: $('#hsr-addTest-tTopic').val(),
+            cId: $('#hsr-addTest-tClassify').val(),
             uId:jsonObj.uId,
-            oA: $('#yy-addTest-choiceA').val(),
-            oB: $('#yy-addTest-choiceB').val(),
-            oC: $('#yy-addTest-choiceC').val(),
-            oD: $('#yy-addTest-choiceD').val(),
-            tAnswer: $('#yy-addTest-answer').val(),
-            tScore: $('#yy-addTest-tScore').val()
+            oA: $('#hsr-addTest-choiceA').val(),
+            oB: $('#hsr-addTest-choiceB').val(),
+            oC: $('#hsr-addTest-choiceC').val(),
+            oD: $('#hsr-addTest-choiceD').val(),
+            tAnswer: $('#hsr-addTest-answer').val(),
+            tScore: $('#hsr-addTest-tScore').val()
         }
         $.ajax({
             url: pathOl + 'addTest',
@@ -148,13 +148,13 @@ $('#yy-addTest-submit').click(function () {
             success: function (result){
                 let index=parent.layer.getFrameIndex(window.name);
                 if(result) {
-                    $('#yy-addTest-tTopic').val('');
-                    $('#yy-addTest-choiceA').val('');
-                    $('#yy-addTest-choiceB').val('');
-                    $('#yy-addTest-choiceC').val('');
-                    $('#yy-addTest-choiceD').val('');
-                    $('#yy-addTest-answer').val('');
-                    $('#yy-addTest-tScore').val('');
+                    $('#hsr-addTest-tTopic').val('');
+                    $('#hsr-addTest-choiceA').val('');
+                    $('#hsr-addTest-choiceB').val('');
+                    $('#hsr-addTest-choiceC').val('');
+                    $('#hsr-addTest-choiceD').val('');
+                    $('#hsr-addTest-answer').val('');
+                    $('#hsr-addTest-tScore').val('');
                     parent.layer.close(index);
                     parent.reLoadTest();
                     //msg 消息框
@@ -169,15 +169,15 @@ $('#yy-addTest-submit').click(function () {
         localStorage.setItem('mark',"");
         let jsonData = {
             tId:localStorage.getItem("tId"),
-            tTopic: $('#yy-addTest-tTopic').val(),
-            tType: $('#yy-addTest-topBtn-act').val(),
-            oA: $('#yy-addTest-choiceA').val(),
-            oB: $('#yy-addTest-choiceB').val(),
-            oC: $('#yy-addTest-choiceC').val(),
-            oD: $('#yy-addTest-choiceD').val(),
-            tAnswer: $('#yy-addTest-answer').val(),
-            tScore: $('#yy-addTest-tScore').val(),
-            cId: $('#yy-addTest-tClassify').val()
+            tTopic: $('#hsr-addTest-tTopic').val(),
+            tType: $('#hsr-addTest-topBtn-act').val(),
+            oA: $('#hsr-addTest-choiceA').val(),
+            oB: $('#hsr-addTest-choiceB').val(),
+            oC: $('#hsr-addTest-choiceC').val(),
+            oD: $('#hsr-addTest-choiceD').val(),
+            tAnswer: $('#hsr-addTest-answer').val(),
+            tScore: $('#hsr-addTest-tScore').val(),
+            cId: $('#hsr-addTest-tClassify').val()
         };
         $.ajax({
             url: pathOl + 'changeTest',
@@ -188,13 +188,13 @@ $('#yy-addTest-submit').click(function () {
             success: function (result){
                 let index=parent.layer.getFrameIndex(window.name);
                 if(result) {
-                    $('#yy-addTest-tTopic').val('');
-                    $('#yy-addTest-choiceA').val('');
-                    $('#yy-addTest-choiceB').val('');
-                    $('#yy-addTest-choiceC').val('');
-                    $('#yy-addTest-choiceD').val('');
-                    $('#yy-addTest-answer').val('');
-                    $('#yy-addTest-tScore').val('');
+                    $('#hsr-addTest-tTopic').val('');
+                    $('#hsr-addTest-choiceA').val('');
+                    $('#hsr-addTest-choiceB').val('');
+                    $('#hsr-addTest-choiceC').val('');
+                    $('#hsr-addTest-choiceD').val('');
+                    $('#hsr-addTest-answer').val('');
+                    $('#hsr-addTest-tScore').val('');
                     parent.layer.close(index);
                     parent.reLoadTest();
                     //msg 消息框

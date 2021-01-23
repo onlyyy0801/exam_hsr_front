@@ -9,22 +9,22 @@ html,body{
     width: 100%;
 }
 
-.yy-addTest-main{
+.hsr-addTest-main{
     width: 98%;
     margin: 10px auto;
     /*height: 100px;*/
 }
 
-.yy-addTest-main>p>span{
+.hsr-addTest-main>p>span{
     font-size: 25px;
     font-weight: bold;
 }
-.yy-addTest-main>p>button{
+.hsr-addTest-main>p>button{
     float: right;
 }
 
 
-.yy-addTest-main button{
+.hsr-addTest-main button{
     width: 80px;
     height: 30px;
     color: #fff;
@@ -35,39 +35,39 @@ html,body{
     border-radius: 5px;
 }
 
-.yy-addTest-top,
-.yy-addTest-bottom{
+.hsr-addTest-top,
+.hsr-addTest-bottom{
     margin: 20px 40px;
 }
 
-.yy-addTest-top>p>button{
+.hsr-addTest-top>p>button{
     border: 1px solid #53D192;
     background-color: #fff;
     color: #53D192;
     /*margin-right: 5px;*/
 }
 
-#yy-addTest-topBtn-act{
+#hsr-addTest-topBtn-act{
     background-color: #53D192;
     color: #fff;
 }
 
 
-.yy-addTest-mid{
+.hsr-addTest-mid{
     margin-left: 92px;
 }
-.yy-addTest-mid textarea{
+.hsr-addTest-mid textarea{
     margin-left: 13px;
 }
 
 
-.yy-addTest-top p,
-.yy-addTest-mid p,
-.yy-addTest-bottom p{
+.hsr-addTest-top p,
+.hsr-addTest-mid p,
+.hsr-addTest-bottom p{
     line-height: 30px;
 }
 
-.yy-addTest-top textarea,
-.yy-addTest-bottom textarea{
+.hsr-addTest-top textarea,
+.hsr-addTest-bottom textarea{
     margin-left: 65px;
 }

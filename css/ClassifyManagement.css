@@ -9,26 +9,26 @@ html,body{
     width: 100%;
 }
 
-.yy-classify-main{
+.hsr-classify-main{
     width: 98%;
     margin: 10px auto;
     /*height: 100px;*/
 }
 
-.yy-classify-main p{
+.hsr-classify-main p{
     line-height: 40px;
 }
 
-#yy-classify-value{
+#hsr-classify-value{
     height: 25px;
     outline: none;
 }
 
-#yy-classify-addBtn,
-#yy-classify-allBtn,
-#yy-classify-invertBtn,
-#yy-classify-delAllBtn,
-#yy-classify-table button{
+#hsr-classify-addBtn,
+#hsr-classify-allBtn,
+#hsr-classify-invertBtn,
+#hsr-classify-delAllBtn,
+#hsr-classify-table button{
     width: 80px;
     height: 30px;
     color: #fff;
@@ -40,18 +40,18 @@ html,body{
 }
 
 
-.yy-classify-con table{
+.hsr-classify-con table{
     border-collapse: collapse;
 }
 
-.yy-classify-con tr{
+.hsr-classify-con tr{
     line-height: 40px;
     border-bottom: 1px solid #ccc;
 }
-.yy-classify-con td{
+.hsr-classify-con td{
      width: 300px;
  }
-.yy-classify-con tr td:nth-child(1){
+.hsr-classify-con tr td:nth-child(1){
     width: 50px;
 }
 

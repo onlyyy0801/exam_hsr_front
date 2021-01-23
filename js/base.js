@@ -1,8 +1,8 @@
 function changeBlue(aim) {
-    aim.attr('class','yy-blue');
+    aim.attr('class','hsr-blue');
 }
 function changeRed(aim) {
-    aim.attr('class','yy-red');
+    aim.attr('class','hsr-red');
 }
 
 function getIndex(i) {

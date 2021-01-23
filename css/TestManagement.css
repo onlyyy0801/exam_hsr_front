@@ -9,14 +9,14 @@ html,body{
     width: 100%;
 }
 
-.yy-test-main{
+.hsr-test-main{
     width: 98%;
     margin: 10px auto;
     /*height: 100px;*/
 }
 
 
-.yy-test-main button{
+.hsr-test-main button{
     width: 80px;
     height: 30px;
     color: #fff;
@@ -28,44 +28,44 @@ html,body{
 }
 
 
-.yy-test-con table{
+.hsr-test-con table{
     border-collapse: collapse;
 }
 
-.yy-test-con tr{
+.hsr-test-con tr{
     line-height: 40px;
     border-bottom: 1px solid #ccc;
 }
-.yy-test-con td{
+.hsr-test-con td{
     width: 80px;
 }
-.yy-test-con tr td:nth-child(1){
+.hsr-test-con tr td:nth-child(1){
     width: 20px;
 }
-.yy-test-con tr td:nth-child(2){
+.hsr-test-con tr td:nth-child(2){
     width: 35px;
 }
-.yy-test-con tr td:nth-child(5){
+.hsr-test-con tr td:nth-child(5){
     width: 430px;
 }
-.yy-test-con tr td:nth-child(6){
+.hsr-test-con tr td:nth-child(6){
     width: 200px;
 }
-.yy-test-con tr td:nth-child(7){
+.hsr-test-con tr td:nth-child(7){
     width: 180px;
 }
 
-#yy-test-table{
+#hsr-test-table{
     font-size: 14px;
     color: #5e5e5e;
 }
-#yy-test-table tr td:nth-child(5){
+#hsr-test-table tr td:nth-child(5){
     line-height: 25px;
 }
-#yy-test-table tr td:nth-child(5) a{
+#hsr-test-table tr td:nth-child(5) a{
     color: #5e5e5e;
 }
-#yy-test-table tr td:nth-child(5) a:hover{
+#hsr-test-table tr td:nth-child(5) a:hover{
     cursor: pointer;
     text-decoration: underline;
 }

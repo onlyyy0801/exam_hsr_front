@@ -1,5 +1,5 @@
 
-let mainClassify = $('.yy-con-main');
+let mainClassify = $('.hsr-con-main');
 var jsonStr=localStorage.getItem("UserMsg")
 var jsonObj=JSON.parse(jsonStr);
 
@@ -118,7 +118,7 @@ function changeClassify(cId,cName,uId) {
 }
 
 //添加试题分类
-$('#yy-classify-addBtn').click(function () {
+$('#hsr-classify-addBtn').click(function () {
     let jsonData = {
         uId: jsonObj.uId,
         cName: $(this).prev().val()

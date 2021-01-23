@@ -9,14 +9,14 @@ html,body{
     width: 100%;
 }
 
-.yy-paper-main{
+.hsr-paper-main{
     width: 98%;
     margin: 10px auto;
     /*height: 100px;*/
 }
 
 
-.yy-paper-main button{
+.hsr-paper-main button{
     width: 80px;
     height: 30px;
     color: #fff;
@@ -28,47 +28,47 @@ html,body{
 }
 
 
-.yy-paper-con table{
+.hsr-paper-con table{
     border-collapse: collapse;
 }
 
-.yy-paper-con tr{
+.hsr-paper-con tr{
     line-height: 40px;
     border-bottom: 1px solid #ccc;
 }
 
-.yy-paper-con td{
+.hsr-paper-con td{
     width: 0;
 }
 
-.yy-paper-con tr>td:nth-child(1),
-.yy-paper-con tr>td:nth-child(2){
+.hsr-paper-con tr>td:nth-child(1),
+.hsr-paper-con tr>td:nth-child(2){
     width: 50px;
 }
-.yy-paper-con tr>td:nth-child(3){
+.hsr-paper-con tr>td:nth-child(3){
     width: 500px;
 }
-.yy-paper-con tr>td:nth-child(4){
+.hsr-paper-con tr>td:nth-child(4){
     width: 50px;
 }
 
-.yy-paper-con tr>td:nth-child(5){
+.hsr-paper-con tr>td:nth-child(5){
     width: 160px;
 }
-.yy-paper-con tr>td:nth-child(6){
+.hsr-paper-con tr>td:nth-child(6){
     width: 180px;
 }
 
 
 
-#yy-paper-table{
+#hsr-paper-table{
     font-size: 14px;
     color: #5e5e5e;
 }
-#yy-paper-table a{
+#hsr-paper-table a{
     color: #5e5e5e;
 }
-#yy-paper-table a:hover{
+#hsr-paper-table a:hover{
     cursor: pointer;
     text-decoration: underline;
 }

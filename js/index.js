@@ -15,8 +15,8 @@ function loadUserMsg(uId) {
     let JsonUserMsg = localStorage.getItem("UserMsg");
     let UserMsg = JSON.parse(JsonUserMsg);
 
-    $('.yy-head-photo').attr("src",UserMsg.uPhoto);
-    $('.yy-head-userName').text(UserMsg.uName);
+    $('.hsr-head-photo').attr("src",UserMsg.uPhoto);
+    $('.hsr-head-userName').text(UserMsg.uName);
 
 }
 
@@ -34,13 +34,13 @@ function loadMenu() {
         dataType: "json",
         success: function (result) {
             let len = result.length;
-            let sideMain = $('.yy-side-main');
+            let sideMain = $('.hsr-side-main');
             sideMain.html('');
             for(let i = 0; i < len; i++){
                 if(result[i].isDelete === 1) continue;
                 let a = $('<a>'+ result[i].mCon +'</a>');
                 let li = $('<li>');
-                a.attr("class","yy-side-menu");
+                a.attr("class","hsr-side-menu");
                 a.attr("page-name",result[i].mPage);
                 li.append(a);
                 sideMain.append(li);
@@ -48,12 +48,12 @@ function loadMenu() {
             /**
              * 侧边栏部分
              */
-            let mainCon = $('.yy-con-main');
-            let sideMenu = $('.yy-side-menu');
+            let mainCon = $('.hsr-con-main');
+            let sideMenu = $('.hsr-side-menu');
 
             mainCon.load('con-pages/' + sideMenu.eq(0).attr('page-name') + '.html');
             sideMenu.on('click',function () {
-                $('.yy-con-title a').text($(this).text());
+                $('.hsr-con-title a').text($(this).text());
                 mainCon.html('');
                 mainCon.load('con-pages/' + $(this).attr('page-name') + '.html');
             });
@@ -87,7 +87,7 @@ $(function () {
     /**
      * 顶部用户信息修改、密码修改、退出
      */
-    $('.yy-head-msg').click(function () {
+    $('.hsr-head-msg').click(function () {
         layer.open({
             type: 2,
             title: "个人信息修改",
@@ -106,7 +106,7 @@ $(function () {
             }
         });
     });
-    $('.yy-head-pwd').click(function () {
+    $('.hsr-head-pwd').click(function () {
         layer.open({
             type: 2,
             title: "用户密码修改",
@@ -123,7 +123,7 @@ $(function () {
             }
         });
     });
-    $('.yy-head-exit').click(function () {
+    $('.hsr-head-exit').click(function () {
         localStorage.removeItem("UserMsg");
         window.location.href = "login.html";
     });

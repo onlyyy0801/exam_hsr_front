@@ -19,7 +19,7 @@ $(function () {
                 let tdA = $('<td><a>'+result.result[i].pName+'</a></td>');
                 let tdScore = $('<td>'+result.result[i].pScore+'</td>');
                 let tdTime = $('<td>'+result.result[i].createTime+'</td>');
-                let tdBtn = $('<td><button class="yy-paper-delBtn">删除</button><button class="yy-paper-changeBtn">编辑</button></td>');
+                let tdBtn = $('<td><button class="hsr-paper-delBtn">删除</button><button class="hsr-paper-changeBtn">编辑</button></td>');
 
                 tr.append(tdInput);
                 tr.append(tdIndex);
@@ -28,18 +28,18 @@ $(function () {
                 tr.append(tdTime);
                 tr.append(tdBtn);
                 tr.append(tdId);
-                $('#yy-paper-table').append(tr);
+                $('#hsr-paper-table').append(tr);
             }
-            $('.yy-paper-delBtn').click(function () {
+            $('.hsr-paper-delBtn').click(function () {
                 
             });
-            $('.yy-paper-changeBtn').click(function () {
+            $('.hsr-paper-changeBtn').click(function () {
                 
             });
         }
     });
 });
-$('#yy-paper-addBtn').click(function () {
+$('#hsr-paper-addBtn').click(function () {
     let mainConPaper = $(this).parent().parent().parent();
     mainConPaper.html('');
     mainConPaper.load('con-pages/addPaper.html');
