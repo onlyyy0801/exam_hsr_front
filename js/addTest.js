@@ -74,7 +74,7 @@ $(function () {
                     $('#yy-addTest-choiceD').val(result.oD);
                     $('#yy-addTest-answer').val(result.tAnswer);
                     $('#yy-addTest-tScore').val(result.tScore);
-                    $('#yy-addTest-tClassify').val(result.tClassify);
+                    $('#yy-addTest-tClassify').val(result.cId);
 
                     localStorage.setItem('mark',"needSubmitSingle");
 
@@ -104,7 +104,7 @@ $(function () {
                     $('#yy-addTest-tTopic').val(result.tTopic);
                     $('#yy-addTest-answer').val(result.tAnswer);
                     $('#yy-addTest-tScore').val(result.tScore);
-                    $('#yy-addTest-tClassify').val(result.tClassify);
+                    $('#yy-addTest-tClassify').val(result.cId);
 
                     localStorage.setItem('mark',"needSubmitQuest");
 

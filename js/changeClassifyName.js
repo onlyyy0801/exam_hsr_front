@@ -26,8 +26,8 @@ $('.hsr-changeClassify').click(function () {
                 let index = parent.layer.getFrameIndex(window.name);
                 if (mark){
                     parent.layer.close(index);
+                    parent.reLoadClassify();
                     parent.layer.msg("修改成功！！！");
-                    reLoadClassify();
                 }else {
                     parent.layer.close(index);
                     parent.layer.msg("修改失败！！！");
