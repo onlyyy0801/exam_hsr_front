@@ -41,7 +41,7 @@ function wgzTestTable() {
         pageNumber:1,       //初始化加载第一页
         pagination:true,    //是否分页
         sidePagination:'server',  //服务器端client不分页 server分页
-        pageSize:10,         //单页记录数  告知前端使用者  每页显示多少个
+        pageSize:6,         //单页记录数  告知前端使用者  每页显示多少个
         queryParams:function(params){
             var temp={
                 uId:jsonObj.uId,

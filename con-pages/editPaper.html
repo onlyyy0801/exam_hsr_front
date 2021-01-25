@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑试卷</title>
+    <link rel="stylesheet" href="../css/tools/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tools/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../css/editPaper.css">
+</head>
+<body>
+<div class="hsr-editPaper-main">
+    <p>
+        试题试卷：
+        <input type="text" name="pId" hidden>
+        <input type="text" id="hsr-editPaper-value" name="pName">
+        <select name="time" id="hsr-editPaper-time">
+            <option value="10">10分钟</option>
+            <option value="30">30分钟</option>
+            <option value="60">60分钟</option>
+        </select>
+        <button id="hsr-editPaper-edit">修改</button>
+    </p>
+    <p>
+        <button id="hsr-editPaper-allBtn">全选</button>
+        <button id="hsr-editPaper-invertBt">反选</button>
+        <button id="hsr-editPaper-delAllBtn">删除</button>
+        <button id="hsr-editPaper-addTestBtn">添加试题</button>
+        <span id="hsr-editPaper-filter">
+            题目：
+            <input type="text" name="filterName" id="hsr-editPaper-filterName">
+            <select name="filterTType" id="hsr-editPaper-filterTType">
+                <option value="all">所有</option>
+                <option value="single">单选题</option>
+                <option value="quest">简答题</option>
+            </select>
+            <select name="filterTClassify" id="hsr-editPaper-filterTClassify"></select>
+            <button id="hsr-editPaper-filterBtn">筛选</button>
+        </span>
+    </p>
+    <div class="hsr-editPaper-con">
+        <table id="hsr-editPaper-table"></table>
+    </div>
+</div>
+</body>
+<script src="../js/tools/jquery.min.js"></script>
+<script src="../js/tools/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../js/tools/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/editPaper.js"></script>
+</html>

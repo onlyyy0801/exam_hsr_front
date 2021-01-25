@@ -14,6 +14,19 @@ html,body{
     width: 100%;
 }
 
+
+#common-btn{
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    border-style: none;
+    background-color: #53D192;
+    margin-right: 5px;
+    outline: none;
+    border-radius: 5px;
+    line-height: 30px;
+}
+
 /**
     头部区域开始
  */
@@ -122,6 +135,7 @@ html,body{
 }
 .hsr-side a:hover{
     cursor: pointer;
+    color: #ccc;
 }
 
 
@@ -169,6 +183,11 @@ html,body{
     -moz-box-shadow:0 8px 8px #bbb;
     -webkit-box-shadow:0 8px 8px #bbb;
     box-shadow:0 8px 8px #bbb;
+}
+.hsr-con-nav a:hover{
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
 }
 
 .hsr-con-main{

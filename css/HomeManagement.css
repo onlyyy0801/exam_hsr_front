@@ -1,22 +1,7 @@
-
 /**
     页面的通用代码，每个内容页都要有
  */
-
-
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-}
-
-html,body{
-    width: 100%;
-}
-
 .hsr-indexCon-main{
     width: 98%;
     margin: 15px auto;
 }
-

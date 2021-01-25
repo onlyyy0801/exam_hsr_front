@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>试卷模块-试卷管理页</title>
+    <link rel="stylesheet" href="css/tools/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tools/bootstrap-table/bootstrap-table.min.css">
     <link rel="stylesheet" href="css/PaperManagement.css">
 </head>
 <body>
 <div class="hsr-paper-main">
     <p>
+        试题试卷：
+        <input type="text" id="hsr-paper-value">
+        <select name="time" id="hsr-paper-time">
+            <option value="10">10分钟</option>
+            <option value="30">30分钟</option>
+            <option value="60">60分钟</option>
+        </select>
+        <button id="hsr-paper-addBtn">添加试卷</button>
+    </p>
+    <p>
         <button id="hsr-paper-allBtn">全选</button>
         <button id="hsr-paper-invertBt">反选</button>
         <button id="hsr-paper-delAllBtn">删除</button>
-        <button id="hsr-paper-addBtn">添加试卷</button>
     </p>
     <div class="hsr-paper-con">
-        <table>
-            <tr>
-                <td></td>
-                <td>序号</td>
-                <td>试卷名称</td>
-                <td>分值</td>
-                <td>修改时间</td>
-                <td>操作</td>
-            </tr>
-        </table>
-        <table id="hsr-paper-table">
-        </table>
+        <table id="hsr-paper-table"></table>
     </div>
 </div>
 </body>
-<!--<script src="js/jquery.min.js"></script>-->
-<!--<script src="js/base.js"></script>-->
+<script src="js/tools/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="js/tools/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <script src="js/PaperManagement.js"></script>
 </html>

@@ -1,14 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-}
-
-html,body{
-    width: 100%;
-}
-
 .hsr-classify-main{
     width: 98%;
     margin: 10px auto;
@@ -37,22 +26,5 @@ html,body{
     margin-right: 5px;
     outline: none;
     border-radius: 5px;
+    line-height: 30px;
 }
-
-
-.hsr-classify-con table{
-    border-collapse: collapse;
-}
-
-.hsr-classify-con tr{
-    line-height: 40px;
-    border-bottom: 1px solid #ccc;
-}
-.hsr-classify-con td{
-     width: 300px;
- }
-.hsr-classify-con tr td:nth-child(1){
-    width: 50px;
-}
-
-
