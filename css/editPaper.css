@@ -20,3 +20,7 @@
     float: right;
     display: none;
 }
+#hsr-editPaper-showTestBtn{
+    width: 130px;
+    display: none;
+}
