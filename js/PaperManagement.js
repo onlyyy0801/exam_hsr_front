@@ -22,7 +22,7 @@ $('#hsr-paper-addBtn').click(function () {
             contentType: "application/json",
             dataType: "json",
             success: function (result) {
-                if (result) alert("success");
+                reLoadPaper();
             }
         });
     }
@@ -38,9 +38,9 @@ function reLoadPaper() {
 
 function loadPaper() {
     $('#hsr-paper-table').bootstrapTable({
-       url: pathOl + "showPaper",
-       method: "post",
-        dataType: "json",
+        url: pathOl + "showPaper",
+        method: "POST",
+        dataType: "JSON",
         striped:true,       //设置表格隔行换色效果
         pageNumber:1,       //初始化加载第一页
         pagination:true,    //是否分页
@@ -73,7 +73,10 @@ function loadPaper() {
                 title: '时长',
                 align:'center',//水平居中
                 // halign:'center',//垂直居中
-                field: 'pTime'
+                field: 'pTime',
+                formatter:function (value,row,index) {
+                    return row.pTime + "分钟";
+                }
             },
             {
                 title: '状态',
@@ -108,19 +111,19 @@ function loadPaper() {
                     let editPaper =    '<a onclick="editPaper(\''+row.pId+'\')">编辑</a>';
                     let deletePaper =  '<a onclick="deletePaper(\''+row.pId+'\',\''+UserMsg.uId+'\')">删除</a>';
 
-                    return changeStatus + showCode + editPaper + deletePaper;
+                    return changeStatus +"&nbsp;"+ showCode +"&nbsp;"+ editPaper +"&nbsp;"+ deletePaper;
                 }
             }
         ]
     });
 }
+// 改变试卷状态 0/1
 function changeStatus(pId,status) {
-    let conMsg = "";
-    if(status) {
+    var conMsg = "";
+    if(status === "1") {
         status = 0;
         conMsg = "关闭考试";
-    }
-    else {
+    }else if(status === "0") {
         status = 1;
         conMsg = "开启考试";
     }
@@ -135,18 +138,19 @@ function changeStatus(pId,status) {
         contentType: "application/json",
         dataType: "json",
         success: function (result) {
-            if(result.mark) alert(conMsg + "成功");
+            if(result) reLoadPaper();
             else alert(conMsg + "失败");
         }
     });
 }
+// 展示考试链接及考试码
 function showCode(code) {
     layer.open({
         type:2,//可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
         title:'考试链接',
         maxmin:false,
         shadeClose:false,
-        area:["70%","70%"],//弹出层的宽高
+        area:["40%","40%"],//弹出层的宽高
         content:'con-pages/showCode.html',//设置弹出层打开的页面
         success:function(layero,index){
             //当前是表格页面     修改是表格的子页面   父页面JS代码中将数据传递给子页面中
@@ -159,6 +163,7 @@ function showCode(code) {
     });
 }
 function editPaper(pId) {
+    localStorage.setItem("paperId",pId);
     layer.open({
         type:2,//可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）。
         title:'编辑试卷',
@@ -170,9 +175,9 @@ function editPaper(pId) {
             //当前是表格页面     修改是表格的子页面   父页面JS代码中将数据传递给子页面中
             //获取子页面HTML对象  固定方法
             //js  dom对象
-            let childBody= layer.getChildFrame('body',index);
+            // let childBody= layer.getChildFrame('body',index);
             //在childBody子页面body区域中find（查找）input标签name属性是xxx的那个input对象，给其设置值为xxx
-            $(childBody).find('input[name=pId]').val(UserMsg.pId);
+            // $(childBody).find('#hsr-editPaper-id').val(pId);
         }
     });
 }
@@ -188,10 +193,7 @@ function deletePaper(pId, uId) {
         contentType: "application/json",
         dataType: "json",
         success: function (result) {
-            if(result.mark) {
-                alert("删除成功");
-                reLoadPaper();
-            }
+            if(result) reLoadPaper();
             else alert("删除失败");
         }
     });

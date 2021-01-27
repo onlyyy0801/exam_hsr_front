@@ -11,7 +11,6 @@
 <div class="hsr-editPaper-main">
     <p>
         试题试卷：
-        <input type="text" name="pId" hidden>
         <input type="text" id="hsr-editPaper-value" name="pName">
         <select name="time" id="hsr-editPaper-time">
             <option value="10">10分钟</option>
@@ -28,24 +27,27 @@
         <button id="hsr-editPaper-showTestBtn">显示已添加试题</button>
         <span id="hsr-editPaper-filter">
             题目：
-            <input type="text" name="filterName" id="hsr-editPaper-filterName">
+            <input type="text" name="filterName" id="hsr-editPaper-filterName" placeholder="请输入部分题目" >
             <select name="filterTType" id="hsr-editPaper-filterTType">
-                <option value="all">所有</option>
-                <option value="single">单选题</option>
-                <option value="quest">简答题</option>
+                <option value="2">所有</option>
+                <option value="0">选择题</option>
+                <option value="1">简答题</option>
             </select>
-            <select name="filterTClassify" id="hsr-editPaper-filterTClassify"></select>
+            <select name="filterTClassify" id="hsr-editPaper-filterTClassify">
+                <option value="all">所有</option>
+            </select>
             <button id="hsr-editPaper-filterBtn">筛选</button>
         </span>
     </p>
     <div class="hsr-editPaper-con">
         <table id="hsr-editPaper-table"></table>
+        <table id="hsr-editPaper-table2" hidden></table>
     </div>
 </div>
 </body>
-<script src="../js/tools/jquery.min.js"></script>
-<script src="../js/tools/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="../js/tools/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-<script src="../js/base.js"></script>
-<script src="../js/editPaper.js"></script>
+    <script src="../js/tools/jquery.min.js"></script>
+    <script src="../js/tools/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/tools/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/editPaper.js"></script>
 </html>

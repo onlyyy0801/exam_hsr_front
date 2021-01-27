@@ -16,3 +16,8 @@
     border-radius: 5px;
     line-height: 30px;
 }
+
+.hsr-paper-main a:hover{
+    cursor: pointer;
+}
+
