@@ -3,8 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>TLEDU-考试</title>
+    <link rel="stylesheet" href="../css/exam.css">
 </head>
 <body>
-
+<div class="time-item">
+    <span id="day_show">0天</span>
+    <strong id="hour_show">0时</strong>
+    <strong id="minute_show">0分</strong>
+    <strong id="second_show">0秒</strong>
+</div>
+<div class="hsr-examTest-main">
+    <div class="hsr-examTest-top">
+            题目：
+        <p id="hsr-examTest-title"></p>
+    </div>
+    <div class="hsr-examTest-mid">
+        <table>
+            <tr>
+                <td>A：</td>
+                <td><p id="hsr-examTest-optionA"></p></td>
+            </tr>
+            <tr>
+                <td>B：</td>
+                <td><p id="hsr-examTest-optionB"></p></td>
+            </tr>
+            <tr>
+                <td>C：</td>
+                <td><p id="hsr-examTest-optionC"></p></td>
+            </tr>
+            <tr>
+                <td>D：</td>
+                <td><p id="hsr-examTest-optionD"></p></td>
+            </tr>
+        </table>
+    </div>
+    <div class="hsr-examTest-bottom">
+        答案：
+        <textarea name="" id="hsr-examTest-shortAnswer" cols="60" rows="7" ></textarea>
+        <div id="hsr-examTest-radioAnswer">
+            <input type="radio" name="radi" value="A">A
+            <input type="radio" name="radi" value="B">B
+            <input type="radio" name="radi" value="C">C
+            <input type="radio" name="radi" value="D">D
+        </div>
+    </div>
+    <span>
+            <button id="upTest">上一题</button><button id="downTest">下一题</button>
+    </span>
+</div>
 </body>
+<script src="../js/tools/jquery.min.js"></script>
+<script src="../js/exam.js"></script>
 </html>

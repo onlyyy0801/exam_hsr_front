@@ -42,7 +42,6 @@ loginBtn.on('click',function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (result) {
-                console.log(result);
                 if(result.uId == null || result.uAcc == null || result.uName == null || result.uPwd == null ||
                     result.uPhoto == null ){
                     acc.val('');

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考前提示窗口</title>
+    <style>
+        .hsr-beforeExamCon-main{
+            width: 98%;
+            margin: 15px auto;
+        }
+        #hsr-beforeExam-startExam{
+            width: 80px;
+            height: 42px;
+            margin-top: 20px;
+            border-radius: 6px;
+            background: #53d192;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="hsr-beforeExamCon-main">
+    <p>天亮教育考试系统</p>
+    <p>作者：wgz、yy</p>
+    <p>指导：gxp</p>
+    <p>时间：2021-01-18</p>
+    <p>提示：考试中不要关闭界面，不然考试失败后顾自负</p>
+    <button id="hsr-beforeExam-startExam">开始考试</button>
+</div>
+</body>
+
+<script src="../js/tools/jquery.min.js"></script>
+<script src="../js/tools/layer.js"></script>
+<script src="../js/base.js"></script>
+<script>
+
+    let beforeExamState = false;
+    let jsonStr=localStorage.getItem("CandidateMsg");
+    let jsonObj=JSON.parse(jsonStr);
+
+    //开始考试点击事件
+    $('#hsr-beforeExam-startExam').on("click",function () {
+        starteExam();
+        paperTime();
+        if (beforeExamState){
+            let index=parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+            window.location.href = "exam.html";
+        }else alert("考试已结束或考试入口已关闭！");
+
+    });
+
+    //连接数据库开始考试
+    function starteExam() {
+        let jsonData = {
+            pId: jsonObj.pId,
+            rId: jsonObj.rId
+        };
+        $.ajax({
+            url: pathOl + 'showExamTest',
+            type: 'post',
+            data: JSON.stringify(jsonData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (result) {
+                if (result){
+                    localStorage.setItem("ExamPaperTest",JSON.stringify(result));
+                    beforeExamState = true;
+                }
+            }
+        });
+    }
+
+    //获得考试时长
+    function paperTime() {
+        let jsonData = {
+            pId: jsonObj.pId
+        };
+        $.ajax({
+            url: pathOl + 'showPaperById',
+            type: 'post',
+            data: JSON.stringify(jsonData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (result) {
+                if (result.pTime!=null){
+                    localStorage.setItem("PaperTime",result.pTime);
+                }
+            }
+        });
+    }
+</script>
+</html>
