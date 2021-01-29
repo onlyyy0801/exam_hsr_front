@@ -1,11 +1,13 @@
 let testNumber = 0;
 let jsonStr=localStorage.getItem("ExamPaperTest");
 let jsonObj=JSON.parse(jsonStr);
+let ExamText;
 
-// let intDiff = parseInt(localStorage.getItem("PaperTime"));//倒计时总秒数量
-let intDiff = parseInt(1800);//倒计时总秒数量
+let intDiff = parseInt(localStorage.getItem("PaperTime")*60);//倒计时总秒数量
+// let intDiff = parseInt(1800);//倒计时总秒数量
 
 $(function(){
+    $("#tijiao").hide();
     showThisTest();
     timer(intDiff);
 });
@@ -21,7 +23,7 @@ function showRadio(test) {
     $("#hsr-examTest-optionC").text(test.oC);
     $("#hsr-examTest-optionD").text(test.oD);
     for (i=0;i<4;i++){
-        if ($("input[name='radi']").eq(i).val()===jsonObj[testNumber].tAnswer){
+        if ($("input[name='radi']").eq(i).val()===jsonObj[testNumber].aAnswer){
             $("input[name='radi']").eq(i).get(0).checked=true;
         }
     }
@@ -33,47 +35,57 @@ function showShort(test) {
     $(".hsr-examTest-mid").hide();
     $("#hsr-examTest-radioAnswer").hide();
     $("#hsr-examTest-title").text(test.tTopic);
-    $("#hsr-examTest-shortAnswer").val(jsonObj[testNumber].tAnswer);
+    $("#hsr-examTest-shortAnswer").val(jsonObj[testNumber].aAnswer);
 }
 
 //记录答案
 function getAnswer(){
-    if (jsonObj[testNumber].tType===0){
+    if (ExamText.tType===0){
         for (i=0;i<4;i++){
             if ($("input[name='radi']").eq(i).get(0).checked===true){
-                jsonObj[testNumber].tAnswer=$("input[name='radi']").eq(i).val();
+                jsonObj[testNumber].aAnswer=$("input[name='radi']").eq(i).val();
             }
         }
-    }else if (jsonObj[testNumber].tType===1){
-        jsonObj[testNumber].tAnswer=$("#hsr-examTest-shortAnswer").val();
+    }else if (ExamText.tType===1){
+        jsonObj[testNumber].aAnswer=$("#hsr-examTest-shortAnswer").val();
     }
+}
+
+//清空答案栏
+function cleanAnswer(){
+    for (i=0;i<4;i++){
+        $("input[name='radi']").eq(i).get(0).checked=false
+    }
+    $("#hsr-examTest-shortAnswer").val("");
 }
 
 //上一题按钮
 $("#upTest").on('click',function () {
+    getAnswer();
     if (testNumber>0){
-        getAnswer();
+        if (testNumber===(jsonObj.length-1)){
+            $("#tijiao").hide();
+            $("#downTest").show();
+        }
         testNumber--;
+        cleanAnswer();
         showThisTest();
-    }if (testNumber===(jsonObj.length()-1)){
-        getAnswer();
-        testNumber--;
-        $("#tijiao").text("下一题")
-        $("#tijiao").attr("id","downTest");
-        showThisTest();
-    }else alert("已经到头了")
+    }else if (testNumber===0){
+        alert("已经到头了");
+    }
 })
 
 //下一题按钮
 $("#downTest").on('click',function () {
-    if (testNumber<(jsonObj.length()-1)){
-        getAnswer();
+    getAnswer();
+    if (testNumber<(jsonObj.length-1)){
         testNumber++;
+        cleanAnswer();
         showThisTest();
-    }if (testNumber===(jsonObj.length()-1)){
-        alert("已经是最后一体，确认无误即可提交")
-        $("#downTest").text("提交")
-        $("#downTest").attr("id","tijiao");
+    }else if (testNumber===(jsonObj.length-1)){
+        alert("已经是最后一题，确认无误即可提交");
+        $("#downTest").hide();
+        $("#tijiao").show();
     }
 })
 
@@ -89,9 +101,11 @@ function showThisTest() {
         contentType: 'application/json',
         dataType: 'json',
         success: function (result) {
-            if (result.tType===0){
+            ExamText = result;
+            if (result.tType === 0) {
                 showRadio(result);
-            }if (result.tType===1){
+            }
+            if (result.tType === 1) {
                 showShort(result);
             }
         }
@@ -99,20 +113,22 @@ function showThisTest() {
 }
 
 //提交试卷
-$("#tijiao").on("click",function () {
+$("#tijiao").on('click',function () {
     let jsonData = jsonObj;
     $.ajax({
-        url: pathOl + 'showTestById',
+        url: pathOl + 'submitPaper',
         type: 'post',
         data: JSON.stringify(jsonData),
         contentType: 'application/json',
         dataType: 'json',
         success: function (result) {
-           alert("成绩"+result);
+            alert("成绩"+result);
             window.location.href="candidate.html";
         }
     });
 })
+
+
 
 
 function timer(intDiff){

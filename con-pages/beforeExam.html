@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>考前提示窗口</title>
+    <link rel="stylesheet" href="../css/tools/layer.css">
     <style>
         .hsr-beforeExamCon-main{
             width: 98%;
@@ -33,7 +34,7 @@
 </body>
 
 <script src="../js/tools/jquery.min.js"></script>
-<!--<script src="../js/tools/layer.js"></script>-->
+<script src="../js/tools/layer.js"></script>
 <script src="../js/base.js"></script>
 <script>
 
@@ -41,14 +42,18 @@
     let jsonStr=localStorage.getItem("CandidateMsg");
     let jsonObj=JSON.parse(jsonStr);
 
-    //开始考试点击事件
-    $('#hsr-beforeExam-startExam').on("click",function () {
+    $(function () {
         starteExam();
         paperTime();
+    })
+
+    //开始考试点击事件
+    $('#hsr-beforeExam-startExam').on("click",function () {
+
+        console.log(beforeExamState);
         if (beforeExamState){
             let index=parent.layer.getFrameIndex(window.name);
             parent.layer.close(index);
-            window.location.href = "exam.html";
         }else alert("考试已结束或考试入口已关闭！");
 
     });
@@ -69,7 +74,6 @@
                 console.log(result)
                 localStorage.setItem("ExamPaperTest",JSON.stringify(result));
                 beforeExamState = true;
-                console.log(beforeExamState);
             }
         });
     }
@@ -87,6 +91,7 @@
             dataType: 'json',
             success: function (result) {
                 if (result.pTime!=null){
+                    console.log(result.pTime)
                     localStorage.setItem("PaperTime",result.pTime);
                 }
             }

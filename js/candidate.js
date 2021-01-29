@@ -57,9 +57,12 @@ examStart.on('click',function () {
                         title:'添加试题',
                         maxmin:false,
                         shadeClose:false,
-                        area:['70%','70%'],//弹出层的宽高
+                        area:['30%','45%'],//弹出层的宽高
                         content:'beforeExam.html',//设置弹出层打开的页面
-                        closeBtn: 0          //没有关闭按钮X
+                        closeBtn: 0,          //没有关闭按钮X
+                        end: function () {
+                            window.location.href = "exam.html";
+                        }
                         //弹出层页面成功打开后，的设置       加载子页面 渲染子页面 load后端数据 弹出 success 展示成功
                         // success:function(layero,index){
                         //     //当前是表格页面     修改是表格的子页面   父页面JS代码中将数据传递给子页面中
