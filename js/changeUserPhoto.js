@@ -13,7 +13,8 @@ var uploader = WebUploader.create({
     // auto: true,
 
     // swf文件路径
-    swf: 'http://www.colayy.top:8082/exam_hsr_front/js/tools/Uploader.swf',
+    // swf: 'http://www.colayy.top:8082/exam_hsr_front/js/tools/Uploader.swf',
+    swf: 'http://localhost:63342/exam_hsr_front/js/tools/Uploader.swf',
 
     // 文件接收服务端。
     server: pathOl + 'upUserPhoto',
@@ -64,6 +65,7 @@ uploader.on( 'fileQueued', function( file ) {
 //result 后端返回的数据   JSON格式
 uploader.on( 'uploadSuccess', function( file ,result) {
     $( '#'+file.id ).addClass('upload-state-done');
+    console.log(result.uPhoto);
     let data = {
         uId: UserMsg.uId,
         uPhoto: result.uPhoto
@@ -83,7 +85,7 @@ uploader.on( 'uploadSuccess', function( file ,result) {
                 parent.layer.close(index);
                 parent.layer.msg("菜单内容修改失败");
             }
-            parent.reloadMenuList();
+            parent.loadUserMsg(UserMsg.uId);
         }
     });
 });

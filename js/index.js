@@ -119,7 +119,8 @@ $(function () {
         localStorage.removeItem("UserMsg");
         window.location.href = "login.html";
     });
-    $('#hsr-head-photo').click(function () {
+
+    $('.hsr-head-photo').click(function () {
         layer.open({
             type: 2,
             title: "用户头像修改",
