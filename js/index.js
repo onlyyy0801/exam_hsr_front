@@ -52,7 +52,10 @@ function loadMenu() {
             let mainCon = $('.hsr-con-main');
             let sideMenu = $('.hsr-side-menu');
 
+            $('.hsr-con-title a').text(sideMenu.eq(0).text());
+            mainCon.html('');
             mainCon.load('con-pages/' + sideMenu.eq(0).attr('page-name') + '.html');
+
             sideMenu.on('click',function () {
                 $('.hsr-con-title a').text($(this).text());
                 mainCon.html('');
@@ -63,18 +66,6 @@ function loadMenu() {
 }
 
 $(function () {
-    // 假数据存储
-    // let falseData = {
-    //     uId: "fd1ff6bf-dc3e-4c4c-9ee4-76e97ceb4f51",
-    //     uAcc: "admin",
-    //     uName: "admin2222",
-    //     uPwd: "admin123",
-    //     uPhoto: "img/TL.png",
-    //     isDisabled: 0,
-    //     isRoot: 1
-    // };
-    // localStorage.setItem("UserMsg",JSON.stringify(falseData));
-
     let JsonUserMsg = localStorage.getItem("UserMsg");
     if(JsonUserMsg == null){
         window.location.href = "login.html";
@@ -94,8 +85,8 @@ $(function () {
             title: "个人信息修改",
             area: ["320px","200px"],
             maxmin: false,
-            // closeBtn: 1,
-            shadeClose: true,
+            closeBtn: 1,
+            shadeClose: false,
             content: "con-pages/changeUserMsg.html",
             success: function (layero, index) {
                 let JsonUserMsg = localStorage.getItem("UserMsg");
@@ -113,8 +104,8 @@ $(function () {
             title: "用户密码修改",
             area: ["320px","180px"],
             maxmin: false,
-            // closeBtn: 1,
-            shadeClose: true,
+            closeBtn: 1,
+            shadeClose: false,
             content: "con-pages/changeUserPwd.html",
             success: function (layero, index) {
                 let JsonUserMsg = localStorage.getItem("UserMsg");
@@ -128,6 +119,24 @@ $(function () {
         localStorage.removeItem("UserMsg");
         window.location.href = "login.html";
     });
+    $('#hsr-head-photo').click(function () {
+        layer.open({
+            type: 2,
+            title: "用户头像修改",
+            area: ["320px","180px"],
+            maxmin: false,
+            closeBtn: 1,
+            shadeClose: false,
+            content: "con-pages/changeUserPhoto.html",
+            success: function (layero, index) {
+                let JsonUserMsg = localStorage.getItem("UserMsg");
+                let UserMsg = JSON.parse(JsonUserMsg);
+                let body = layer.getChildFrame('body', index);
+                body.find("input[name=password]").val(UserMsg.uPwd);
+            }
+        });
+    });
 });
+
 
 

@@ -1,0 +1,17 @@
+.hsr-menu-main{
+    width: 98%;
+    margin: 10px auto;
+    /*height: 100px;*/
+}
+
+.hsr-menu-main button{
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    border-style: none;
+    background-color: #53D192;
+    margin-right: 5px;
+    outline: none;
+    border-radius: 5px;
+    line-height: 30px;
+}

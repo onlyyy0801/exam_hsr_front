@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>系统模块-菜单管理页</title>
+    <link rel="stylesheet" href="css/tools/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tools/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/tools/layer.css">
+    <link rel="stylesheet" href="css/MenuManagement.css">
 </head>
 <body>
-
+<div class="hsr-menu-main">
+    <p>
+        <button id="hsr-menu-allBtn">全选</button>
+        <button id="hsr-menu-invertBt">反选</button>
+        <button id="hsr-menu-disabledBtn">禁用</button>
+    </p>
+    <div class="hsr-menu-con">
+        <table id="hsr-menu-table"></table>
+    </div>
+</div>
 </body>
+<script src="js/tools/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="js/tools/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/tools/layer.js"></script>
+<script src="js/MenuManagement.js"></script>
 </html>

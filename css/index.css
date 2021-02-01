@@ -83,7 +83,7 @@ html,body{
 }
 .hsr-head-list{
     width: 100px;
-    height: 120px;
+    /*height: 120px;*/
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 2px;
@@ -91,6 +91,7 @@ html,body{
     top: 35px;
     right: -10px;
     display: none;
+    z-index: 999;
 }
 .hsr-head-list:hover{
     display: block;
