@@ -1,3 +1,6 @@
+let UserMsgJson = localStorage.getItem("UserMsg")
+let UserMsg = JSON.parse(UserMsgJson);
+
 var thumbnailWidth = 1;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档
 var thumbnailHeight = 1;
 
@@ -10,10 +13,10 @@ var uploader = WebUploader.create({
     // auto: true,
 
     // swf文件路径
-    swf: pathOl + '/webupload/Uploader.swf',
+    swf: 'http://www.colayy.top:8082/exam_hsr_front/js/tools/Uploader.swf',
 
     // 文件接收服务端。
-    server: 'http://localhost:8080/Blog_SpringMVC_Mybatis/myWebUploadServlet',
+    server: pathOl + 'upUserPhoto',
 
     // 选择文件的按钮。可选。
     // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -29,7 +32,6 @@ var uploader = WebUploader.create({
 //
 // // 当有文件添加进来的时候  文件队列
 uploader.on( 'fileQueued', function( file ) {
-    console.log("hahahah")
     $list=$("#thelist");
     var $li = $(
         '<div id="' + file.id + '" class="file-item thumbnail">' +
@@ -55,20 +57,6 @@ uploader.on( 'fileQueued', function( file ) {
         $img.attr( 'src', src );
     }, thumbnailWidth, thumbnailHeight );
 });
-// uploader.on( 'uploadProgress', function( file, percentage ) {
-//     var $li = $( '#'+file.id ),
-//         $percent = $li.find('.progress span');
-//
-//     // 避免重复创建
-//     if ( !$percent.length ) {
-//         $percent = $('<p class="progress"><span></span></p>')
-//             .appendTo( $li )
-//             .find('span');
-//     }
-//
-//     $percent.css( 'width', percentage * 100 + '%' );
-// });
-//
 
 
 
@@ -76,7 +64,41 @@ uploader.on( 'fileQueued', function( file ) {
 //result 后端返回的数据   JSON格式
 uploader.on( 'uploadSuccess', function( file ,result) {
     $( '#'+file.id ).addClass('upload-state-done');
-    console.log(result);
+    let data = {
+        uId: UserMsg.uId,
+        uPhoto: result.uPhoto
+    }
+    $.ajax({
+        url: pathOl + "changeUserPhoto",
+        data: JSON.stringify(data),
+        type: "post",
+        contentType: "application/json",
+        dataType: "json",
+        success: function (result) {
+            let index = parent.layer.getFrameIndex(window.name);
+            if(result){
+                parent.layer.close(index);
+                parent.layer.msg("菜单内容修改成功");
+            }else{
+                parent.layer.close(index);
+                parent.layer.msg("菜单内容修改失败");
+            }
+            parent.reloadMenuList();
+        }
+    });
+});
+
+
+uploader.on( 'uploadError', function( file ) {
+    $( '#'+file.id ).find('p.state').text('上传出错');
+});
+
+uploader.on( 'uploadComplete', function( file ) {
+    $( '#'+file.id ).find('.progress').fadeOut();
+});
+
+$('.btn').click(function () {
+    upFile();
 });
 
 function upFile(){
